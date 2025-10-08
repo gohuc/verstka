@@ -32,7 +32,14 @@ class MainActivity : ComponentActivity() {
     private lateinit var correct: LinearLayout
     private lateinit var incorrect: LinearLayout
     private lateinit var text: TextView
+    private lateinit var tryagain: Button
+    private lateinit var one: TextView
+    private lateinit var two: TextView
+    private lateinit var three: TextView
+    private lateinit var four: TextView
 
+    private var selectedNumber: TextView? = null
+    private var selectedLayout: LinearLayout? = null
     private var selectedAnswer: String = ""
     private var correctAnswer: String = "Дверь"
 
@@ -49,7 +56,13 @@ class MainActivity : ComponentActivity() {
         correct = findViewById<LinearLayout>(R.id.correct)
         incorrect = findViewById<LinearLayout>(R.id.incorrect)
         answer_button = findViewById<Button>(R.id.skip)
+        tryagain = findViewById<Button>(R.id.try_again)
         text = findViewById<TextView>(R.id.door)
+        one = findViewById<TextView>(R.id.one)
+        two = findViewById<TextView>(R.id.two)
+        three = findViewById<TextView>(R.id.three)
+        four = findViewById<TextView>(R.id.four)
+        setClickableParent()
 
         button1.setOnClickListener {
             button1.background =
@@ -60,9 +73,9 @@ class MainActivity : ComponentActivity() {
                 ContextCompat.getDrawable(this, R.drawable.shape_rounded_containers)
             button4.background =
                 ContextCompat.getDrawable(this, R.drawable.shape_rounded_containers)
-            answer_button.text = "Answer"
+            answer_button.text = getString(R.string.answer)
             answer_button.isEnabled = true
-            selectedAnswer = "Март"
+            selectedAnswer("Март",button1, one)
 
         }
         button2.setOnClickListener {
@@ -74,9 +87,9 @@ class MainActivity : ComponentActivity() {
                 ContextCompat.getDrawable(this, R.drawable.shape_rounded_containers)
             button4.background =
                 ContextCompat.getDrawable(this, R.drawable.shape_rounded_containers)
-            answer_button.text = "Answer"
+            answer_button.text = getString(R.string.answer)
             answer_button.isEnabled = true
-            selectedAnswer = "Память"
+            selectedAnswer("Память", button2, two )
         }
         button3.setOnClickListener {
             button3.background =
@@ -87,9 +100,9 @@ class MainActivity : ComponentActivity() {
                 ContextCompat.getDrawable(this, R.drawable.shape_rounded_containers)
             button4.background =
                 ContextCompat.getDrawable(this, R.drawable.shape_rounded_containers)
-            answer_button.text = "Answer"
+            answer_button.text = getString(R.string.answer)
             answer_button.isEnabled = true
-            selectedAnswer = "Дверь"
+            selectedAnswer("Дверь",button3,three)
         }
         button4.setOnClickListener {
             button4.background =
@@ -100,29 +113,65 @@ class MainActivity : ComponentActivity() {
                 ContextCompat.getDrawable(this, R.drawable.shape_rounded_containers)
             button2.background =
                 ContextCompat.getDrawable(this, R.drawable.shape_rounded_containers)
-            answer_button.text = "Answer"
+            answer_button.text = getString(R.string.answer)
             answer_button.isEnabled = true
-            selectedAnswer = "Клавиатура"
+            selectedAnswer("Клавиатура", button4,four)
         }
         answer_button.setOnClickListener {
             checkAnswer()
         }
+        tryagain.setOnClickListener {
+            button4.background =
+                ContextCompat.getDrawable(this, R.drawable.shape_rounded_containers)
+            button1.background =
+                ContextCompat.getDrawable(this, R.drawable.shape_rounded_containers)
+            button3.background =
+                ContextCompat.getDrawable(this, R.drawable.shape_rounded_containers)
+            button2.background =
+                ContextCompat.getDrawable(this, R.drawable.shape_rounded_containers)
+            answer_button.visibility = View.VISIBLE
+            answer_button.text = getString(R.string.skip_button)
+            incorrect.visibility = View.GONE
+
+        }
     }
+
+    private fun setClickableParent() {
+        val clickableParent = findViewById<ConstraintLayout>(R.id.parentLayout)
+        clickableParent.setOnClickListener {
+            answer_button.text = getString(R.string.skip_button)
+            selectedLayout?.background = ContextCompat.getDrawable(this, R.drawable.shape_rounded_containers)
+        }
+    }
+
     private fun MainActivity.checkAnswer() {
         if (selectedAnswer == correctAnswer){
             correct.visibility = View.VISIBLE
-            button3.background = ContextCompat.getDrawable(this, R.drawable.rounded_containers_correct)
+            selectedLayout?.background = ContextCompat.getDrawable(this, R.drawable.rounded_containers_correct)
             text.setTextColor(ContextCompat.getColor(this,R.color.green))
+            selectedNumber?.background = ContextCompat.getDrawable(this, R.drawable.shape_rounded_variants_correct)
+            selectedNumber?.setTextColor(ContextCompat.getColor(this,R.color.white))
             incorrect.visibility = View.GONE
             answer_button.visibility = View.GONE
         }
         else{
             incorrect.visibility = View.VISIBLE
             answer_button.visibility = View.GONE
-            
+            selectedLayout?.background = ContextCompat.getDrawable(this, R.drawable.rounded_containers_wrong)
+            selectedNumber?.background = ContextCompat.getDrawable(this, R.drawable.shape_rounded_variants_wrong)
+            selectedNumber?.setTextColor(ContextCompat.getColor(this,R.color.white))
         }
     }
+    private fun MainActivity.selectedAnswer(answer: String, layout: LinearLayout, number: TextView) {
+        selectedAnswer = answer
+        selectedLayout = layout
+        selectedNumber = number
+        answer_button.isEnabled = true
+    }
 }
+
+
+
 
 
 
