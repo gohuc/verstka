@@ -14,7 +14,8 @@
         android:background="@android:color/transparent"
         android:src="@drawable/r_icon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="close image button"/>
 
     <TextView
         android:id="@+id/textView"
@@ -28,7 +29,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-        android:text="Door" />
+        android:fontFamily="@font/nunito_bold"
+        android:text="Door"
+        tools:ignore="HardcodedText" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -55,13 +58,16 @@
                 android:gravity="center"
                 android:text="1"
                 android:textColor="#888992"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Март" />
+                android:fontFamily="@font/rubik_regular"
+                android:text="Март"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
         <LinearLayout
@@ -79,13 +85,16 @@
                 android:gravity="center"
                 android:text="1"
                 android:textColor="#888992"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Март" />
+                android:fontFamily="@font/rubik_regular"
+                android:text="Память"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
         <LinearLayout
@@ -103,13 +112,16 @@
                 android:gravity="center"
                 android:text="1"
                 android:textColor="#888992"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Март" />
+                android:fontFamily="@font/rubik_regular"
+                android:text="Дверь"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
         <LinearLayout
@@ -127,13 +139,16 @@
                 android:gravity="center"
                 android:text="1"
                 android:textColor="#888992"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Март" />
+                android:fontFamily="@font/rubik_regular"
+                android:text="Клавиатура"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
 
@@ -145,7 +160,7 @@
         android:backgroundTint="#2574FF"
         android:background="@drawable/shape_rounded_buttons"
         android:layout_marginBottom="34dp"
-        android:text="skip"
+        android:text="@string/skip_button"
         android:textAllCaps="true"
         android:textColor="#FFFFFF"
         android:visibility="gone"
@@ -171,12 +186,15 @@
             android:src="@drawable/ic_correct"
             app:layout_constraintBaseline_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="correct answer icon"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Correct!"
+            android:fontFamily="@font/rubik_regular"
+            android:text="@string/correct_answer"
             android:textColor="@color/white"
             android:layout_marginStart="8dp"
             android:textSize="22sp"
@@ -187,14 +205,15 @@
         <Button
             android:layout_width="310dp"
             android:layout_height="58dp"
-            android:text="CONTINUE"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/continue_button"
             android:backgroundTint="@color/white"
             android:background="@drawable/shape_rounded_buttons"
             android:textColor="#0EAD69"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView"/>
 
 
 

@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">verstka</string>
+    <string name="app_name" translatable="false">verstka</string>
+    <string name="skip_button">skip</string>
+    <string name="correct_answer">Correct!</string>
+    <string name="continue_button">CONTINUE</string>
 </resources>
